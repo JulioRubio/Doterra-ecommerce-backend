@@ -1,8 +1,5 @@
 import type { AWS } from '@serverless/typescript';
 
-import hello from '@functions/hello';
-import addProcut from '@lambdas/http/admin';
-
 const serverlessConfiguration: AWS = {
   service: 'doterra-ecommerce-backend',
   frameworkVersion: '2',
@@ -22,11 +19,73 @@ const serverlessConfiguration: AWS = {
     },
     environment: {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
+      tableName: 'Products'
     },
+    iamRoleStatements: [
+      {
+        Effect: 'Allow',
+        Action: ['dynamodb:*'],
+        Resource: '*',
+      }
+    ],
     lambdaHashingVersion: '20201221',
   },
   // import the function via paths
-  functions: { hello },
+  functions: { 
+    CreateProduct:{
+      handler: 'src/lambdas/http/admin/addProduct.handler',
+      events: [
+        {
+          http: {
+            method: 'post',
+            path: 'addProduct',
+          }
+        }
+      ]
+  },
+    getProducts:{
+      handler: 'src/lambdas/http/admin/getProducts.handler',
+      events: [
+        {
+          http: {
+            method: 'get',
+            path: 'getProducts',
+          }
+        }
+      ]
+  },
+    deleteProduct:{
+      handler: 'src/lambdas/http/admin/deleteProduct.handler',
+      events: [
+        {
+          http: {
+            method: 'delete',
+            path: 'deleteProduct/{productId}',
+          }
+        }
+      ]
+  },
+},
+  resources: {
+    Resources: {
+      ProductsTable: {
+        Type: 'AWS::DynamoDB::Table',
+        Properties:{
+          TableName: "${self:provider.environment.tableName}",
+          AttributeDefinitions:[
+            {AttributeName: 'productId', AttributeType: 'S'}
+          ],
+          KeySchema:[
+            {AttributeName: 'productId', KeyType: 'HASH'}
+          ],
+          BillingMode: 'PAY_PER_REQUEST'
+        }
+      }
+    }
+  }
 };
 
 module.exports = serverlessConfiguration;
+
+
+      
