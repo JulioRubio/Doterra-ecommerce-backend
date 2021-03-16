@@ -65,6 +65,28 @@ const serverlessConfiguration: AWS = {
         }
       ]
   },
+  getProduct:{
+    handler: 'src/lambdas/http/admin/getProduct.handler',
+    events: [
+      {
+        http: {
+          method: 'get',
+          path: 'getProduct/{productId}',
+        }
+      }
+    ]
+  },
+  updateProduct:{
+    handler: 'src/lambdas/http/admin/updateProduct.handler',
+    events: [
+      {
+        http: {
+          method: 'patch',
+          path: 'updateProduct',
+        }
+      }
+    ]
+  },
 },
   resources: {
     Resources: {
