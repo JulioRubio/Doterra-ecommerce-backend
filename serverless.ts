@@ -19,7 +19,8 @@ const serverlessConfiguration: AWS = {
     },
     environment: {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
-      tableName: 'Products'
+      tableName: 'Products',
+      tableName2: 'Events'
     },
     iamRoleStatements: [
       {
@@ -39,6 +40,7 @@ const serverlessConfiguration: AWS = {
           http: {
             method: 'post',
             path: 'addProduct',
+            cors: true
           }
         }
       ]
@@ -50,6 +52,7 @@ const serverlessConfiguration: AWS = {
           http: {
             method: 'get',
             path: 'getProducts',
+            cors: true
           }
         }
       ]
@@ -61,6 +64,7 @@ const serverlessConfiguration: AWS = {
           http: {
             method: 'delete',
             path: 'deleteProduct/{productId}',
+            cors: true
           }
         }
       ]
@@ -72,6 +76,7 @@ const serverlessConfiguration: AWS = {
         http: {
           method: 'get',
           path: 'getProduct/{productId}',
+          cors: true
         }
       }
     ]
@@ -83,11 +88,13 @@ const serverlessConfiguration: AWS = {
         http: {
           method: 'patch',
           path: 'updateProduct',
+          cors: true
         }
       }
     ]
   },
 },
+  //Tabla de productos, con llave primaria productID
   resources: {
     Resources: {
       ProductsTable: {
@@ -99,6 +106,20 @@ const serverlessConfiguration: AWS = {
           ],
           KeySchema:[
             {AttributeName: 'productId', KeyType: 'HASH'}
+          ],
+          BillingMode: 'PAY_PER_REQUEST'
+        }
+      },
+      //Tabla de eventos, con llave primaria eventID
+      EventsTable:{
+        Type: 'AWS::DynamoDB::Table',
+        Properties:{
+          TableName: "${self:provider.environment.tableName2}",
+          AttributeDefinitions:[
+            {AttributeName: 'eventId', AttributeType: 'S'}
+          ],
+          KeySchema:[
+            {AttributeName: 'eventId', KeyType: 'HASH'}
           ],
           BillingMode: 'PAY_PER_REQUEST'
         }

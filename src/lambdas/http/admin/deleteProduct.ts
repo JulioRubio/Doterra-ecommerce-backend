@@ -9,12 +9,8 @@ const productsTable = process.env.tableName
 export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
     
     const product = event.pathParameters
-    
     await deleteProduct(product)
     
-
-    
-
     return {
         statusCode: 200,
         headers: {
