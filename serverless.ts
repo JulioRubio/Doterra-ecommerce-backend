@@ -33,6 +33,7 @@ const serverlessConfiguration: AWS = {
   },
   // import the function via paths
   functions: { 
+    //Product Admin Functions
     CreateProduct:{
       handler: 'src/lambdas/http/admin/addProduct.handler',
       events: [
@@ -88,6 +89,31 @@ const serverlessConfiguration: AWS = {
         http: {
           method: 'patch',
           path: 'updateProduct',
+          cors: true
+        }
+      }
+    ]
+  },
+  //Event Admin Functions
+  AddEvent:{
+    handler: 'src/lambdas/http/admin/addEvent.handler',
+    events: [
+      {
+        http: {
+          method: 'post',
+          path: 'addEvent',
+          cors: true
+        }
+      }
+    ]
+  },
+  deleteEvent:{
+    handler: 'src/lambdas/http/admin/deleteEvent.handler',
+    events: [
+      {
+        http: {
+          method: 'delete',
+          path: 'deleteEvent/{eventId}',
           cors: true
         }
       }
