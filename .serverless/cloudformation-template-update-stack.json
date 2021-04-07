@@ -222,7 +222,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/doterra-ecommerce-backend/dev/1617772797671-2021-04-07T05:19:57.671Z/doterra-ecommerce-backend.zip"
+          "S3Key": "serverless/doterra-ecommerce-backend/dev/1617774282112-2021-04-07T05:44:42.112Z/doterra-ecommerce-backend.zip"
         },
         "Handler": "src/lambdas/http/admin/addProduct.handler",
         "Runtime": "nodejs14.x",
@@ -254,7 +254,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/doterra-ecommerce-backend/dev/1617772797671-2021-04-07T05:19:57.671Z/doterra-ecommerce-backend.zip"
+          "S3Key": "serverless/doterra-ecommerce-backend/dev/1617774282112-2021-04-07T05:44:42.112Z/doterra-ecommerce-backend.zip"
         },
         "Handler": "src/lambdas/http/admin/getProducts.handler",
         "Runtime": "nodejs14.x",
@@ -286,7 +286,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/doterra-ecommerce-backend/dev/1617772797671-2021-04-07T05:19:57.671Z/doterra-ecommerce-backend.zip"
+          "S3Key": "serverless/doterra-ecommerce-backend/dev/1617774282112-2021-04-07T05:44:42.112Z/doterra-ecommerce-backend.zip"
         },
         "Handler": "src/lambdas/http/admin/deleteProduct.handler",
         "Runtime": "nodejs14.x",
@@ -318,7 +318,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/doterra-ecommerce-backend/dev/1617772797671-2021-04-07T05:19:57.671Z/doterra-ecommerce-backend.zip"
+          "S3Key": "serverless/doterra-ecommerce-backend/dev/1617774282112-2021-04-07T05:44:42.112Z/doterra-ecommerce-backend.zip"
         },
         "Handler": "src/lambdas/http/admin/getProduct.handler",
         "Runtime": "nodejs14.x",
@@ -350,7 +350,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/doterra-ecommerce-backend/dev/1617772797671-2021-04-07T05:19:57.671Z/doterra-ecommerce-backend.zip"
+          "S3Key": "serverless/doterra-ecommerce-backend/dev/1617774282112-2021-04-07T05:44:42.112Z/doterra-ecommerce-backend.zip"
         },
         "Handler": "src/lambdas/http/admin/updateProduct.handler",
         "Runtime": "nodejs14.x",
@@ -382,7 +382,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/doterra-ecommerce-backend/dev/1617772797671-2021-04-07T05:19:57.671Z/doterra-ecommerce-backend.zip"
+          "S3Key": "serverless/doterra-ecommerce-backend/dev/1617774282112-2021-04-07T05:44:42.112Z/doterra-ecommerce-backend.zip"
         },
         "Handler": "src/lambdas/http/admin/addEvent.handler",
         "Runtime": "nodejs14.x",
@@ -414,7 +414,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/doterra-ecommerce-backend/dev/1617772797671-2021-04-07T05:19:57.671Z/doterra-ecommerce-backend.zip"
+          "S3Key": "serverless/doterra-ecommerce-backend/dev/1617774282112-2021-04-07T05:44:42.112Z/doterra-ecommerce-backend.zip"
         },
         "Handler": "src/lambdas/http/admin/deleteEvent.handler",
         "Runtime": "nodejs14.x",
@@ -446,7 +446,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/doterra-ecommerce-backend/dev/1617772797671-2021-04-07T05:19:57.671Z/doterra-ecommerce-backend.zip"
+          "S3Key": "serverless/doterra-ecommerce-backend/dev/1617774282112-2021-04-07T05:44:42.112Z/doterra-ecommerce-backend.zip"
         },
         "Handler": "src/lambdas/http/admin/getEvents.handler",
         "Runtime": "nodejs14.x",
@@ -478,7 +478,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/doterra-ecommerce-backend/dev/1617772797671-2021-04-07T05:19:57.671Z/doterra-ecommerce-backend.zip"
+          "S3Key": "serverless/doterra-ecommerce-backend/dev/1617774282112-2021-04-07T05:44:42.112Z/doterra-ecommerce-backend.zip"
         },
         "Handler": "src/lambdas/http/admin/getEvent.handler",
         "Runtime": "nodejs14.x",
@@ -510,7 +510,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/doterra-ecommerce-backend/dev/1617772797671-2021-04-07T05:19:57.671Z/doterra-ecommerce-backend.zip"
+          "S3Key": "serverless/doterra-ecommerce-backend/dev/1617774282112-2021-04-07T05:44:42.112Z/doterra-ecommerce-backend.zip"
         },
         "Handler": "src/lambdas/http/admin/updateEvent.handler",
         "Runtime": "nodejs14.x",
@@ -535,104 +535,104 @@
         "UpdateEventLogGroup"
       ]
     },
-    "CreateProductLambdaVersion8Q8Au0LcEWyfMPeoYBxeHg5JhyYmYKV6pQlloq3k0E": {
+    "CreateProductLambdaVersionu8ZtFkQT7gCTza5m2xJiXcn9C9BN12aUWrD0S9wVDQ": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "CreateProductLambdaFunction"
         },
-        "CodeSha256": "oYu1vEUm+3Y0ssUV70hS20ohozd3yumdtcsMlTu7bVs="
+        "CodeSha256": "MF3mixjib61uOYlnQKcvwV4fyjI830AiJZP+RUazXDI="
       }
     },
-    "GetProductsLambdaVersionwldSdxufavFE0q86bY4Gyp1qAWVtDfkUV1c6iakwc": {
+    "GetProductsLambdaVersion9d9aqpTfAf78b70CoXWmOSiLgcEdeiMXGtuJKjANQMI": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GetProductsLambdaFunction"
         },
-        "CodeSha256": "oYu1vEUm+3Y0ssUV70hS20ohozd3yumdtcsMlTu7bVs="
+        "CodeSha256": "MF3mixjib61uOYlnQKcvwV4fyjI830AiJZP+RUazXDI="
       }
     },
-    "DeleteProductLambdaVersionRSNd96TpQNvyjuR3Kkag0Wvnlh36gucr22sbHVyXqI": {
+    "DeleteProductLambdaVersionAW78avgJJNVshHpMl4wqxRXXRay49FselKma92WOreQ": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "DeleteProductLambdaFunction"
         },
-        "CodeSha256": "oYu1vEUm+3Y0ssUV70hS20ohozd3yumdtcsMlTu7bVs="
+        "CodeSha256": "MF3mixjib61uOYlnQKcvwV4fyjI830AiJZP+RUazXDI="
       }
     },
-    "GetProductLambdaVersioniIsVho7oKUjuwVqgG9uXoUxZLT72o5BdElxQspw": {
+    "GetProductLambdaVersionpzkft4To17LvrcwcNI7rugWSc7QlGnd9nhOe9Cnm7o": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GetProductLambdaFunction"
         },
-        "CodeSha256": "oYu1vEUm+3Y0ssUV70hS20ohozd3yumdtcsMlTu7bVs="
+        "CodeSha256": "MF3mixjib61uOYlnQKcvwV4fyjI830AiJZP+RUazXDI="
       }
     },
-    "UpdateProductLambdaVersionGgL0lLxn431i8hELNUqEJBeTBe9U9v7ovtgdqvP0": {
+    "UpdateProductLambdaVersionSeupPWQTEsyPbBh7dsjmihYBuofonuvlekYNzF5tx8": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "UpdateProductLambdaFunction"
         },
-        "CodeSha256": "oYu1vEUm+3Y0ssUV70hS20ohozd3yumdtcsMlTu7bVs="
+        "CodeSha256": "MF3mixjib61uOYlnQKcvwV4fyjI830AiJZP+RUazXDI="
       }
     },
-    "AddEventLambdaVersion4LhvjJiDlPydFcCFVxEG1gQgT65FCOF8oymvJqEEZO4": {
+    "AddEventLambdaVersion3rarOmrRmrRaSktQ0vWpuJkY8zNVoyn3Ip747foZdM": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "AddEventLambdaFunction"
         },
-        "CodeSha256": "oYu1vEUm+3Y0ssUV70hS20ohozd3yumdtcsMlTu7bVs="
+        "CodeSha256": "MF3mixjib61uOYlnQKcvwV4fyjI830AiJZP+RUazXDI="
       }
     },
-    "DeleteEventLambdaVersion2bPdNsxi3ZBRYsm6VKnPazTs1Hpbgb6HtVvfvxHj1Qo": {
+    "DeleteEventLambdaVersionkqnfiKf93WBUT31jn3a977X6w1lnbBrhePD9w1aIY": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "DeleteEventLambdaFunction"
         },
-        "CodeSha256": "oYu1vEUm+3Y0ssUV70hS20ohozd3yumdtcsMlTu7bVs="
+        "CodeSha256": "MF3mixjib61uOYlnQKcvwV4fyjI830AiJZP+RUazXDI="
       }
     },
-    "GetEventsLambdaVersionnJbMsXi04nubv2xKqfHigJ0yHAcpBuODLwOg3LzbbM": {
+    "GetEventsLambdaVersionirErHBV7W8AIOvOlvZeLQ54xXOCBEn0vWIhcUw914": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GetEventsLambdaFunction"
         },
-        "CodeSha256": "oYu1vEUm+3Y0ssUV70hS20ohozd3yumdtcsMlTu7bVs="
+        "CodeSha256": "MF3mixjib61uOYlnQKcvwV4fyjI830AiJZP+RUazXDI="
       }
     },
-    "GetEventLambdaVersionPnCFzGDHyE5wnwVVeMmTFGBvkfTbfLhqodMzuWowE": {
+    "GetEventLambdaVersionU9Mftw3mTykVz9h6GDqmd613cJ0CE1qdx5PMK2wi7ls": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GetEventLambdaFunction"
         },
-        "CodeSha256": "oYu1vEUm+3Y0ssUV70hS20ohozd3yumdtcsMlTu7bVs="
+        "CodeSha256": "MF3mixjib61uOYlnQKcvwV4fyjI830AiJZP+RUazXDI="
       }
     },
-    "UpdateEventLambdaVersionkcCon1GMIvdEAa3kSpL8MXEMaI9TmXnAJjQZnFKVF10": {
+    "UpdateEventLambdaVersionFOfIrjuM6HZH6POicue23217t9dKkJiJ2Yl8DvmbM": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "UpdateEventLambdaFunction"
         },
-        "CodeSha256": "oYu1vEUm+3Y0ssUV70hS20ohozd3yumdtcsMlTu7bVs="
+        "CodeSha256": "MF3mixjib61uOYlnQKcvwV4fyjI830AiJZP+RUazXDI="
       }
     },
     "ApiGatewayRestApi": {
@@ -1726,7 +1726,7 @@
         "MethodResponses": []
       }
     },
-    "ApiGatewayDeployment1617772772455": {
+    "ApiGatewayDeployment1617774266609": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -2175,61 +2175,61 @@
     "CreateProductLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "CreateProductLambdaVersion8Q8Au0LcEWyfMPeoYBxeHg5JhyYmYKV6pQlloq3k0E"
+        "Ref": "CreateProductLambdaVersionu8ZtFkQT7gCTza5m2xJiXcn9C9BN12aUWrD0S9wVDQ"
       }
     },
     "GetProductsLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GetProductsLambdaVersionwldSdxufavFE0q86bY4Gyp1qAWVtDfkUV1c6iakwc"
+        "Ref": "GetProductsLambdaVersion9d9aqpTfAf78b70CoXWmOSiLgcEdeiMXGtuJKjANQMI"
       }
     },
     "DeleteProductLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "DeleteProductLambdaVersionRSNd96TpQNvyjuR3Kkag0Wvnlh36gucr22sbHVyXqI"
+        "Ref": "DeleteProductLambdaVersionAW78avgJJNVshHpMl4wqxRXXRay49FselKma92WOreQ"
       }
     },
     "GetProductLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GetProductLambdaVersioniIsVho7oKUjuwVqgG9uXoUxZLT72o5BdElxQspw"
+        "Ref": "GetProductLambdaVersionpzkft4To17LvrcwcNI7rugWSc7QlGnd9nhOe9Cnm7o"
       }
     },
     "UpdateProductLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "UpdateProductLambdaVersionGgL0lLxn431i8hELNUqEJBeTBe9U9v7ovtgdqvP0"
+        "Ref": "UpdateProductLambdaVersionSeupPWQTEsyPbBh7dsjmihYBuofonuvlekYNzF5tx8"
       }
     },
     "AddEventLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "AddEventLambdaVersion4LhvjJiDlPydFcCFVxEG1gQgT65FCOF8oymvJqEEZO4"
+        "Ref": "AddEventLambdaVersion3rarOmrRmrRaSktQ0vWpuJkY8zNVoyn3Ip747foZdM"
       }
     },
     "DeleteEventLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "DeleteEventLambdaVersion2bPdNsxi3ZBRYsm6VKnPazTs1Hpbgb6HtVvfvxHj1Qo"
+        "Ref": "DeleteEventLambdaVersionkqnfiKf93WBUT31jn3a977X6w1lnbBrhePD9w1aIY"
       }
     },
     "GetEventsLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GetEventsLambdaVersionnJbMsXi04nubv2xKqfHigJ0yHAcpBuODLwOg3LzbbM"
+        "Ref": "GetEventsLambdaVersionirErHBV7W8AIOvOlvZeLQ54xXOCBEn0vWIhcUw914"
       }
     },
     "GetEventLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GetEventLambdaVersionPnCFzGDHyE5wnwVVeMmTFGBvkfTbfLhqodMzuWowE"
+        "Ref": "GetEventLambdaVersionU9Mftw3mTykVz9h6GDqmd613cJ0CE1qdx5PMK2wi7ls"
       }
     },
     "UpdateEventLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "UpdateEventLambdaVersionkcCon1GMIvdEAa3kSpL8MXEMaI9TmXnAJjQZnFKVF10"
+        "Ref": "UpdateEventLambdaVersionFOfIrjuM6HZH6POicue23217t9dKkJiJ2Yl8DvmbM"
       }
     },
     "ServiceEndpoint": {

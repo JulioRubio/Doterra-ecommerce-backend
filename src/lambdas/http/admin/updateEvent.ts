@@ -7,7 +7,7 @@ import {
 } from "aws-lambda";
 
 const docClient = new AWS.DynamoDB.DocumentClient();
-const eventsTable = process.env.tableName;
+const eventsTable = process.env.tableName2;
 
 export const handler: APIGatewayProxyHandler = async (
   event: APIGatewayProxyEvent
