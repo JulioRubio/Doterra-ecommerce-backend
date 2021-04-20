@@ -9,7 +9,7 @@ AWS.config.update({
 });
 
 const docClient = new AWS.DynamoDB.DocumentClient();
-let eventsTable = "Events";
+const eventsTable = "Events";
 
 async function addEvent (newEvent){
     const eventId = uuid.v4()
@@ -25,13 +25,23 @@ async function addEvent (newEvent){
     }
     console.log(AWS.config)
     console.log(params)
-    return await docClient.put(params, function(err, data){
+    
+    await docClient.put(params, function(err, data){
       if (err) {
         console.error("Unable to add item. Error JSON:", JSON.stringify(err, null, 2));
       } else {
         console.log("Added item:", JSON.stringify(data, null, 2));
       }
     })
+
+    return {
+      statusCode: 201,
+      headers: {
+        'Access-Control-Allow-Origin':'*',
+        'Access-Control-Allow-Credentials':true
+      },
+      body: JSON.stringify(eventId)
+    }
 }
 
 module.exports = addEvent
