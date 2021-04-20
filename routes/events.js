@@ -3,6 +3,7 @@ const addEvent = require('../endpoints/admin/Events/addEvent.ts')
 const getEvents = require('../endpoints/admin/Events/getEvents.ts')
 const getEvent = require('../endpoints/admin/Events/getEvent.ts')
 const updateEvent = require('../endpoints/admin/Events/updateEvent.ts')
+const removeEvent = require('../endpoints/admin/Events/removeEvent.ts')
 const Events = require('../endpoints/admin/Events/Events.ts')
 
 const router = express.Router()
@@ -44,8 +45,15 @@ router.patch('/updateEvent', async (req, res) => {
     }
 });
 
-router.delete('/deleteEvent/:eventId', (req, res) => {
-    res.send('delete event');
+router.delete('/deleteEvent/:eventId', async (req, res) => {
+    try {
+        console.log(req.body)
+        const result = await removeEvent(req.params)
+        res.send(result);
+    } catch (error) {
+        console.error(error)
+        res.status(500).json({ err: 'Something went wrong'});
+    }
 });
 
 module.exports = router;
