@@ -1,38 +1,37 @@
-import * as AWS  from 'aws-sdk'
-import * as uuid from 'uuid'
-import {awsConfig} from '../../../config/awsConfig'
+var AWS = require('aws-sdk')
+require('dotenv').config();
 
-AWS.config.update(awsConfig);
+AWS.config.update({
+  region: "us-east-1",
+  accessKeyId: process.env.ACCESSKEYID,
+  secretAccessKey: process.env.SECRETACCESSKEYID
+});
 
-const docClient = new AWS.DynamoDB.DocumentClient();
-let productsTable = "Products";
+var docClient = new AWS.DynamoDB.DocumentClient();
+var productsTable = "Products";
 
-
-function getProduct (Event){
+ async function getProduct (productId){
+    const product =  await getDBProduct(productId)
     
-    //const productId = event.pathParameters
-    //const product = await getProduct(productId)
-    
-
     return {
         statusCode: 200,
         headers: {
             'Access-Control-Allow-Origin':'*',
             'Access-Control-Allow-Credentials':true
         },
-        //body: JSON.stringify(product)
+        body: product
     }
 }
 
-async function getDBProduct(productId) {
+ async function getDBProduct(productId) {
     let params = {
         TableName: productsTable,
-        Key: productId
+        Key: {
+            "productId":productId
+        }
     }
-
-    const result = await docClient.get(params).promise()
-  
+    const result =  await docClient.get(params).promise()
     return result.Item
 }
 
-module.exports.getProduct = getProduct;
+module.exports = getProduct;

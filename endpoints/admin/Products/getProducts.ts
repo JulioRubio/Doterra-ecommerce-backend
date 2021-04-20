@@ -1,36 +1,54 @@
-import * as AWS  from 'aws-sdk'
-import * as uuid from 'uuid'
-import {awsConfig} from '../../../config/awsConfig'
+var AWS = require('aws-sdk')
+require('dotenv').config();
 
-AWS.config.update(awsConfig);
+AWS.config.update({
+  region: "us-east-1",
+  accessKeyId: process.env.ACCESSKEYID,
+  secretAccessKey: process.env.SECRETACCESSKEYID
+});
 
-const docClient = new AWS.DynamoDB.DocumentClient();
-let productsTable = "Products";
+var docClient = new AWS.DynamoDB.DocumentClient();
+var productsTable = "Products";
 
-
-function getProducts (){
+async function getProducts (){
     
-    //const products = await getProducts()
-    
-    //console.log(event.pathParameters)
-
-
-    return {
-        statusCode: 200,
-        headers: {
-            'Access-Control-Allow-Origin':'*',
-            'Access-Control-Allow-Credentials':true
-        },
-        //body: JSON.stringify(products)
-    }
-}
-
-async function getDBProducts() {
     let params = {
         TableName: productsTable,
     }
 
-    const result = await docClient.scan(params).promise()
-  
+    var result;
+    
+    try{result = await docClient.scan(params).promise()}
+    catch{
+        return {
+            statusCode: 400,
+            headers: {
+                'Access-Control-Allow-Origin':'*',
+                'Access-Control-Allow-Credentials':true
+            },
+            body: "No se pudo"
+        }
+    }
+    finally{
+        return {
+            statusCode: 200,
+            headers: {
+                'Access-Control-Allow-Origin':'*',
+                'Access-Control-Allow-Credentials':true
+            },
+            body: result
+        }
+    }
+}
+
+ async function getDBProducts() {
+    let params = {
+        TableName: productsTable,
+    }
+
+    const result =  await docClient.scan(params).promise()
+    console.log(result)
     return result.Items
 }
+
+module.exports = getProducts;

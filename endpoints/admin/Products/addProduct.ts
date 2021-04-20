@@ -1,5 +1,5 @@
-const AWS = require('aws-sdk')
-const uuid = require('uuid')
+var AWS = require('aws-sdk')
+var uuid = require('uuid')
 require('dotenv').config();
 
 AWS.config.update({
@@ -8,10 +8,10 @@ AWS.config.update({
   secretAccessKey: process.env.SECRETACCESSKEYID
 });
 
-const docClient = new AWS.DynamoDB.DocumentClient();
-let productsTable = "Products";
+var docClient = new AWS.DynamoDB.DocumentClient();
+var productsTable = "Products";
 
-async function addProduct (newProduct){
+async  function addProduct (newProduct){
     const productId = uuid.v4()
 
     const newItem = {
@@ -23,15 +23,29 @@ async function addProduct (newProduct){
       TableName: productsTable,
       Item: newItem
     }
-    console.log(AWS.config)
-    console.log(params)
-    return await docClient.put(params, function(err, data){
-      if (err) {
-        console.error("Unable to add item. Error JSON:", JSON.stringify(err, null, 2));
-      } else {
-        console.log("Added item:", JSON.stringify(data, null, 2));
-      }
-    })
+    var result;
+
+    try{
+      result = await docClient.put(params).promise()
+    }catch{
+      return {
+        statusCode: 400,
+        headers: {
+            'Access-Control-Allow-Origin':'*',
+            'Access-Control-Allow-Credentials':true
+        },
+        body: "No se pudo"
+    }
+    }finally{
+      return {
+        statusCode: 200,
+        headers: {
+            'Access-Control-Allow-Origin':'*',
+            'Access-Control-Allow-Credentials':true
+        },
+        body: newItem
+    }
+    }
 }
 
 module.exports = addProduct
