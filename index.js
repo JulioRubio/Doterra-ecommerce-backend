@@ -14,7 +14,6 @@ app.use('/products', productRoutes);
 app.use('/events', eventRoutes);
 app.use('/pedidos', pedidoRoutes);
 
-
 app.options('*',cors())
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", '*');
