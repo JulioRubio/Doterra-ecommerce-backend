@@ -9,6 +9,13 @@ const eventRoutes = require('./routes/events')
 const app = express();
 
 //app.options('*',cors())
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", '*');
+    res.header("Access-Control-Allow-Credentials", true);
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+    res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
+    next();
+});
 app.use(bodyParser.json());
 const PORT = 3000;
 
@@ -16,11 +23,11 @@ app.use('/products', productRoutes);
 app.use('/events', eventRoutes);
 
 
-app.listen(process.env.PORT || PORT,() => {
+app.listen(process.env.PORT || PORT, () => {
     console.log(`http://localhost:${PORT}}`);
 });
 
-app.get('/', (req,res) => {
+app.get('/', (req, res) => {
     res.send('Hello There you dude');
 });
 
