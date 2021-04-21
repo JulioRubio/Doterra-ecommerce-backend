@@ -7,6 +7,11 @@ const productRoutes = require('./routes/products')
 const eventRoutes = require('./routes/events')
 
 const app = express();
+app.use(cors())
+app.use(bodyParser.json());
+app.use('/products', productRoutes);
+app.use('/events', eventRoutes);
+
 
 app.options('*',cors())
 app.use(function (req, res, next) {
@@ -16,11 +21,10 @@ app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
     next();
 });
-app.use(bodyParser.json());
+
 const PORT = 3000;
 
-app.use('/products', productRoutes);
-app.use('/events', eventRoutes);
+
 
 
 app.listen(process.env.PORT || PORT, () => {
