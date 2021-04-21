@@ -5,12 +5,14 @@ const bodyParser = require('body-parser')
 
 const productRoutes = require('./routes/products')
 const eventRoutes = require('./routes/events')
+const pedidoRoutes = require('./routes/pedidos')
 
 const app = express();
 app.use(cors())
 app.use(bodyParser.json());
 app.use('/products', productRoutes);
 app.use('/events', eventRoutes);
+app.use('/pedidos', pedidoRoutes);
 
 
 app.options('*',cors())
