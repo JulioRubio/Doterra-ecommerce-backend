@@ -8,7 +8,7 @@ const eventRoutes = require('./routes/events')
 
 const app = express();
 
-app.options('*',cors())
+//app.options('*',cors())
 app.use(bodyParser.json());
 const PORT = 3000;
 
