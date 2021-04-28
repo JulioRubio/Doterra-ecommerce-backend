@@ -1,5 +1,5 @@
-var AWS = require("aws-sdk");
-var uuid = require("uuid");
+const AWS = require("aws-sdk");
+const uuid = require("uuid");
 require("dotenv").config();
 
 AWS.config.update({
@@ -8,8 +8,8 @@ AWS.config.update({
   secretAccessKey: process.env.SECRETACCESSKEYID,
 });
 
-var docClient = new AWS.DynamoDB.DocumentClient();
-var productsTable = "Products";
+const docClient = new AWS.DynamoDB.DocumentClient();
+const productsTable = "Products";
 
 async function updateproduct(newproduct) {
   const result = newproduct//JSON.parse(newproduct);
