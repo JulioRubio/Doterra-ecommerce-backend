@@ -29,7 +29,7 @@ const PORT = 3000;
 
 
 app.listen(process.env.PORT || PORT, () => {
-    console.log(`http://localhost:${PORT}}`);
+    console.log(`http://localhost:${PORT}`);
 });
 
 app.get('/', (req, res) => {
