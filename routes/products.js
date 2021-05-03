@@ -5,6 +5,9 @@ var getProducts = require('../endpoints/admin/Products/getProducts.ts')
 var updateProduct = require('../endpoints/admin/Products/updateProduct.ts')
 var removeProduct = require('../endpoints/admin/Products/removeProduct.ts')
 var removeProducts = require('../endpoints/admin/Products/removeProducts.ts')
+var upload = require('../endpoints/admin/Products/addProductImage.ts')
+
+const singleUpload = upload.single('image');
 
 const router = express.Router()
 
@@ -39,6 +42,15 @@ router.post('/addProduct', async(req,res) => {
         res.send(newProduct);
     }
     
+});
+
+router.post('/addProductImage', function(req,res){
+    singleUpload(req,res,function(err){
+        if(err){
+            return res.status(400).send({errors: [{title: "Error subiendo archivo", detail: err.message}] });
+        }
+        return res.json({'imageUrl': req.file.location});
+    });
 });
 
 router.put('/updateProduct', async(req,res) => {

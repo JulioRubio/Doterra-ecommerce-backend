@@ -16,6 +16,7 @@ async  function addProduct (newProduct){
 
     const newItem = {
         productId: productId,
+        //s3Key : 
         ...newProduct
     }
 

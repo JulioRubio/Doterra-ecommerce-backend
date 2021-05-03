@@ -1,4 +1,4 @@
-const AWS = require('aws-sdk')
+var AWS = require('aws-sdk')
 const uuid = require('uuid')
 require('dotenv').config();
 
