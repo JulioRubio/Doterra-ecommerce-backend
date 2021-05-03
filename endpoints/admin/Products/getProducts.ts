@@ -3,7 +3,7 @@ require('dotenv').config();
 
 //
 AWS.config.update({
-  region: process.env.AWSREGION,
+  region: "us-east-1",
   accessKeyId: process.env.ACCESSKEYID,
   secretAccessKey: process.env.SECRETACCESSKEYID
 });
