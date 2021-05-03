@@ -1,6 +1,7 @@
 var AWS = require('aws-sdk')
 require('dotenv').config();
 
+//
 AWS.config.update({
   region: process.env.AWSREGION,
   accessKeyId: process.env.ACCESSKEYID,
