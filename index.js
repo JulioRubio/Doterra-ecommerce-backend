@@ -27,8 +27,8 @@ app.use('/products', productRoutes);
 app.use('/events', eventRoutes);
 
 
-app.listen(PORT,() => {
-    console.log(`http://localhost:${PORT}}`);
+app.listen(process.env.PORT || PORT,() => {
+    console.log(`PORT: ${PORT}}`);
 });
 
 app.get('/', (req,res) => {
