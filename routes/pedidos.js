@@ -34,7 +34,7 @@ router.post('/addPedido', (req, res) => {
     let newRes = addPedido(req.body)
     res.send(newRes)
 });
-/*
+
 router.patch('/updatePedido', async (req, res) => {
     try {
         console.log(req.body)
@@ -66,6 +66,6 @@ router.delete('/deletePedidos', async (req, res) => {
         console.error(error)
         res.status(500).json({ err: 'Something went wrong'});
     }
-});*/
+});
 
 module.exports = router;
