@@ -14,7 +14,7 @@ const checkJwt = jwt({
     cache: true,
     rateLimit: true,
     jwksRequestsPerMinute: 5,
-    jwksUri: DOMAIN + `/.well-known/jwks.json`
+    jwksUri: DOMAIN + `.well-known/jwks.json`
   }),
 
   // Validate the audience and the issuer.

@@ -16,6 +16,7 @@ async function addPedido (newPedido){
 
     const newItem = {
         pedidoId: pedidoId,
+        createdAt: new Date().toISOString(),
         ...newPedido
     }
 

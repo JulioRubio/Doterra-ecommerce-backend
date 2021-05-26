@@ -6,6 +6,7 @@ const { DATABASE_URL, PORT, SECRET_TOKEN } = require('./config');
 const middleware = require('./middleware/cors')
 const validateToken = require('./middleware/validateToken');
 const validateSessionToken = require('./middleware/validateSessionToken');
+const checkJwt = require('./middleware/checkJwt')
 
 const bodyParser = require('body-parser')
 
@@ -18,11 +19,11 @@ const app = express();
 app.use(cors())
 app.use(bodyParser.json());
 
-app.use(validateToken)
+//app.use(validateToken)
 
-app.use('/products', validateSessionToken, productRoutes);
-app.use('/events', validateSessionToken, eventRoutes);
-app.use('/pedidos', validateSessionToken, pedidoRoutes);
+app.use('/products', checkJwt, productRoutes);
+app.use('/events', checkJwt, eventRoutes);
+app.use('/pedidos', checkJwt, pedidoRoutes);
 app.use('/client', middleware, clientRoutes);
 
 app.options('*',cors())
@@ -30,7 +31,7 @@ app.use(corss);
 
 
 app.listen(PORT,() => {
-    console.log(`PORT: ${PORT}}`);
+    console.log(`PORT: ${PORT}`);
 });
 
 app.get('/', (req,res) => {

@@ -34,7 +34,7 @@ router.post('/addPedido', (req, res) => {
     res.send(newRes)
 });
 
-router.get('/getProduct/:productId', middleware, async(req,res) => {
+router.get('/getProduct/:productId', async(req,res) => {
     let product;
     try{
         product = await getProduct(req.params.productId);
@@ -45,7 +45,7 @@ router.get('/getProduct/:productId', middleware, async(req,res) => {
     }
 });
 
-router.get('/getProducts', middleware, async (req,res) => {
+router.get('/getProducts', async (req,res) => {
     let products;
     try{
          product = await getProducts()

@@ -16,6 +16,7 @@ async function addEvent (newEvent){
 
     const newItem = {
         eventId: eventId,
+        createdAt: new Date().toISOString(),
         ...newEvent
     }
 

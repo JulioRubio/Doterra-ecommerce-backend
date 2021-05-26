@@ -16,6 +16,7 @@ async  function addProduct (newProduct){
 
     const newItem = {
         productId: productId,
+        createdAt: new Date().toISOString(),
         //s3Key : 
         ...newProduct
     }
