@@ -13,13 +13,26 @@ var productsTable = "Products";
 
 async  function addProduct (newProduct){
     const productId = uuid.v4()
+    let name = newProduct.productName.toLowerCase()
+    let desc =  newProduct.productDesc.toLowerCase()
+
+    name = name.replace(/ /g,"_");
+    desc = desc.replace(/ /g,"_");
+
+    //delete newProduct.productImages;
+
+    let searchParam = name + "_" + desc;
+
 
     const newItem = {
         productId: productId,
         //s3Key : 
+        searchParam:searchParam,
         ...newProduct
     }
 
+    delete newItem.productImages
+  
     var params = {
       TableName: productsTable,
       Item: newItem
