@@ -12,7 +12,6 @@ var docClient = new AWS.DynamoDB.DocumentClient();
 var productsTable = "Products";
 
 async function getProducts (){
-    
     let params = {
         TableName: productsTable,
     }
@@ -48,7 +47,6 @@ async function getProducts (){
     }
 
     const result =  await docClient.scan(params).promise()
-    console.log(result)
     return result.Items
 }
 

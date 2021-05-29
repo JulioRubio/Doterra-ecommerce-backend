@@ -15,9 +15,15 @@ async function updateproduct(newproduct) {
   const result = newproduct//JSON.parse(newproduct);
   const productId = result.productId;
   delete result["productId"];
-  console.log(result);
+  
 
-  console.log("Updating the item...");
+  let name = newproduct.productName.toLowerCase()
+  let desc =  newproduct.productDesc.toLowerCase()
+
+  name = name.replace(/ /g,"_");
+  desc = desc.replace(/ /g,"_");
+
+  let searchParam = name + "_" + desc;
 
   let updateExpression = "set";
   let ExpressionAttributeNames = {};

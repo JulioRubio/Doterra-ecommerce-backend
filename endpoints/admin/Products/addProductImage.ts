@@ -12,7 +12,7 @@ AWS.config.update({
 var s3 = new AWS.S3();
  
 
-//TODO: Hacer esto pero seguro
+
 var upload = multer({
   storage: multerS3({
     s3: s3,
