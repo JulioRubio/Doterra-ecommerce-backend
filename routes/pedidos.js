@@ -2,10 +2,10 @@ const express = require('express')
 const addPedido = require('../endpoints/admin/Pedidos/addPedido.ts')
 const getPedidos = require('../endpoints/admin/Pedidos/getPedidos.ts')
 const getPedido = require('../endpoints/admin/Pedidos/getPedido.ts')
-/*const updatePedido = require('../endpoints/admin/Pedidos/updatePedido.ts')
+const updatePedido = require('../endpoints/admin/Pedidos/updatePedido.ts')
 const removePedido = require('../endpoints/admin/Pedidos/removePedido.ts')
 const removePedidos = require('../endpoints/admin/Pedidos/removePedidos.ts')
-const Pedidos = require('../endpoints/admin/Pedidos/Pedidos.ts')*/
+const Pedidos = require('../endpoints/admin/Pedidos/Pedidos.ts')
 
 const router = express.Router()
 
