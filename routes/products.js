@@ -31,9 +31,9 @@ router.get('/getProduct/:productId', async(req,res) => {
         }catch{
             //res.send(product);
         }finally{
-            product.body.productImage = []
+            product.body.productImages = []
             for(let i = 0; i < productImage.body.length; i++){
-                product.body.productImage[i] = productImage.body[i].productImage
+                product.body.productImages[i] = productImage.body[i].productImage
             }
             res.send(product)
         }
@@ -48,11 +48,11 @@ router.get('/getProducts', async (req,res) => {
 
     }finally{
         for(let i = 0; i < products.body.Count; i++){
-            products.body.Items[i].productImage = []
+            products.body.Items[i].productImages = []
             try{
 
                 let productImage = await getProductImage( products.body.Items[i].productId)
-                products.body.Items[i].productImage = productImage.body[0].productImage
+                products.body.Items[i].productImages = productImage.body[0].productImage
             }catch{
 
             }
