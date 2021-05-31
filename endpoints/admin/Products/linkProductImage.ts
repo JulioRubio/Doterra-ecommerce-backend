@@ -14,8 +14,8 @@ var productsTable = "productImages";
 var s3 = new AWS.S3();
  
 
-async function linkImageToProductId(paramId, productImage) {
-    let productId = paramId.body.productId
+async function linkImageToProductId(param, productImage) {
+    let productId = param.body.productId
 
     const newItem = {
         productId: productId,

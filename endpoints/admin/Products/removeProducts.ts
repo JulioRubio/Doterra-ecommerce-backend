@@ -9,6 +9,7 @@ AWS.config.update({
 
 var docClient = new AWS.DynamoDB.DocumentClient();
 var productsTable = "Products";
+var pImagesTable = "productImage"
 
 async function removeProducts(products) {
   console.log(products.Products[0]);
@@ -19,7 +20,7 @@ async function removeProducts(products) {
       TableName: productsTable,
       Key: {
         productId: productId,
-      },
+      }
     };
   
     result.push(await docClient.delete(params).promise());

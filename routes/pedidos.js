@@ -2,10 +2,10 @@ const express = require('express')
 const addPedido = require('../endpoints/admin/Pedidos/addPedido.ts')
 const getPedidos = require('../endpoints/admin/Pedidos/getPedidos.ts')
 const getPedido = require('../endpoints/admin/Pedidos/getPedido.ts')
-/*const updatePedido = require('../endpoints/admin/Pedidos/updatePedido.ts')
-const removePedido = require('../endpoints/admin/Pedidos/removePedido.ts')
-const removePedidos = require('../endpoints/admin/Pedidos/removePedidos.ts')
-const Pedidos = require('../endpoints/admin/Pedidos/Pedidos.ts')*/
+const updatePedido = require('../endpoints/admin/Pedidos/updatePedido.ts')
+//const removePedido = require('../endpoints/admin/Pedidos/removePedido.ts')
+//const removePedidos = require('../endpoints/admin/Pedidos/removePedidos.ts')
+//const Pedidos = require('../endpoints/admin/Pedidos/Pedidos.ts')*/
 
 const router = express.Router()
 
@@ -34,7 +34,7 @@ router.post('/addPedido', (req, res) => {
     let newRes = addPedido(req.body)
     res.send(newRes)
 });
-/*
+
 router.patch('/updatePedido', async (req, res) => {
     try {
         console.log(req.body)
@@ -45,7 +45,7 @@ router.patch('/updatePedido', async (req, res) => {
         res.status(500).json({ err: 'Something went wrong'});
     }
 });
-
+/*
 router.delete('/deletePedido/:pedidoId', async (req, res) => {
     try {
         console.log(req.body)
