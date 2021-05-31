@@ -11,6 +11,7 @@ var query = require('../endpoints/admin/Products/searchProducts.ts')
 var filter = require('../endpoints/admin/Products/filterProducts.ts')
 var linkProductImage = require('../endpoints/admin/Products/linkProductImage.ts')
 var getProductImage = require('../endpoints/admin/Products/getProductImage.ts')
+var unlinkProductImage = require('../endpoints/admin/Products/unlinkProductImage.ts')
 
 const singleUpload = upload.single('image');
 
@@ -36,8 +37,6 @@ router.get('/getProduct/:productId', async(req,res) => {
             }
             res.send(product)
         }
-         
-        
     }
 });
 
@@ -70,7 +69,6 @@ router.post('/addProduct', async(req,res) => {
     }catch{
 
     }finally{  
-        console.log(req.body.productImages.length)
         for(let i = 0; i < req.body.productImages.length; i++){
             try{
                 console.log(req.body.productImages[i])
@@ -81,6 +79,16 @@ router.post('/addProduct', async(req,res) => {
             }
         }
         res.send(newProduct);
+    }
+});
+
+router.post('/linkProductImage', async(req,res) => {
+    try{
+        await linkProductImage(req.body.productId, req.body.productImage)
+    }catch{
+        res.status(400).send("error ligando imágen")
+    }finally{
+        res.status(200).send(`imagen: ${req.body.productImage} ligada`)
     }
 });
 
@@ -103,6 +111,11 @@ router.delete('/deleteProductImage', async(req,res) => {
 
     }
     finally{
+        try{
+            await unlinkProductImage(req.body)
+        }catch{
+
+        }
         res.send(result)
     }
 });
@@ -118,6 +131,15 @@ router.put('/updateProduct', async(req,res) => {
     }
 });
 
+router.put('/updateProductImage', async(req,res) => {
+    try{
+        await linkProductImage(req, req.body.productImage);
+        return res.status(200).send("Imagen agregada")
+    }catch{
+
+    }
+});
+
 router.delete('/deleteProduct/:productId', async (req, res) => {
     try {
         const result = await removeProduct(req.params)
@@ -130,12 +152,38 @@ router.delete('/deleteProduct/:productId', async (req, res) => {
 
 router.delete('/deleteProducts', async (req, res) => {
     try {
-        console.log(req.body)
-        const result = await removeProducts(req.body)
+        let result = await removeProducts(req.body)
         res.send(result);
     } catch (error) {
-        console.error(error)
         res.status(500).json({ err: 'Something went wrong'});
+    }
+    finally{
+        let productImages;
+        req.body.Products.forEach(async function (productId) {
+            try{
+                productImages = await getProductImage(productId)
+            }catch{
+                console.log("no productImage")
+            }finally{
+                productImages.body.forEach(async element => {
+                    try{
+                        let jsonObject = {
+                            "productImage":element.productImage
+                        }
+                        await deleteProductImage(jsonObject)
+                        
+                    }catch{
+                        console.log("error deleting")
+                    }
+                    try{
+                            await unlinkProductImage(element)
+                    }catch{
+                        console.log("err")
+                    }
+                });
+            res.status(200).send()
+            }
+        });
     }
 });
 
@@ -161,3 +209,5 @@ router.get('/filterProducts', async (req,res) =>{
 });
 
 module.exports = router;
+
+

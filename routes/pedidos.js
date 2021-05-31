@@ -45,7 +45,7 @@ router.patch('/updatePedido', async (req, res) => {
         res.status(500).json({ err: 'Something went wrong'});
     }
 });
-
+/*
 router.delete('/deletePedido/:pedidoId', async (req, res) => {
     try {
         console.log(req.body)

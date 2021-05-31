@@ -15,13 +15,32 @@ async function updateproduct(newproduct) {
   const result = newproduct//JSON.parse(newproduct);
   const productId = result.productId;
   delete result["productId"];
+
+  let paramsOld = {
+    TableName: productsTable,
+    Key: {
+        "productId":productId
+    }
+  }
+  let oldProduct =  await docClient.get(paramsOld).promise()
+  console.log(oldProduct)
   
+  let name 
+  let desc
+  if(newproduct.productName != undefined){
+    name = newproduct.productName.toLowerCase()
+  }else{
+    name = oldProduct.Item.productName.toLowerCase()
+  }
 
-  let name = newproduct.productName.toLowerCase()
-  let desc =  newproduct.productDesc.toLowerCase()
-
+  if(newproduct.productDesc != undefined){
+    desc = newproduct.productDesc.toLowerCase()
+  }else{
+    desc = oldProduct.Item.productDesc.toLowerCase()
+  }
   name = name.replace(/ /g,"_");
   desc = desc.replace(/ /g,"_");
+  
 
   let searchParam = name + "_" + desc;
 
@@ -34,7 +53,9 @@ async function updateproduct(newproduct) {
     ExpressionAttributeValues[":" + property] = result[property];
   }
 
-  console.log(ExpressionAttributeNames);
+  updateExpression += `#searchParam = :searchParam,`;
+  ExpressionAttributeNames["#" + "searchParam"] = "searchParam";
+  ExpressionAttributeValues[":" + "searchParam"] = searchParam;
 
   updateExpression = updateExpression.slice(0, -1);
 

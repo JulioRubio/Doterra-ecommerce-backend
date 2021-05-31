@@ -14,13 +14,13 @@ var s3 = new AWS.S3();
 var docClient = new AWS.DynamoDB.DocumentClient();
 var productsTable = "productImages"; 
 
-async function deleteProductImage(keyPath){
 
+async function deleteProductImage(keyPath){
   let keyStartingPoint = keyPath.productImage.indexOf("imagenesProductos");
   let key = keyPath.productImage.substr(keyStartingPoint);
 
-  console.log(keyPath.productImage)
 
+  console.log(keyPath.productImage)
   var params = {
     TableName : productsTable,
     Key:{
@@ -40,10 +40,7 @@ async function deleteProductImage(keyPath){
     }
   });
 
-
-
   return s3.deleteObject({ Bucket: process.env.BUCKET, Key: key }).promise()
 }
-
 
 module.exports = deleteProductImage;
