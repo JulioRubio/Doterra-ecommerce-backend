@@ -15,67 +15,63 @@ var productsTable = "Products";
 async function filterProducts(filterParams){
   let minPrice = 0
   let maxPrice = 9999999
+  let filterExp = `productPrice BETWEEN :minPrice AND :maxPrice`
+  let expAttr = {}
 
-  let filterFlag = false;
-
-  console.log(filterParams)
-  let oilValue = "...."
-  let skinCareValue = "...."
-  let hairCareValue = "...."
-  let difusorValue = "...."
 
   if(filterParams.minPrice != undefined){
     minPrice = Number(filterParams.minPrice)
+    expAttr[":" + "minPrice"] = filterParams.minPrice;
+  }else{
+    expAttr[":" + "minPrice"] = minPrice;
   }
 
   if(filterParams.maxPrice != undefined){
     maxPrice = Number(filterParams.maxPrice)
+    expAttr[":" + "maxPrice"] = filterParams.maxPrice;
+  }else{
+    expAttr[":" + "maxPrice"] = maxPrice;
   }
 
-  if(filterParams.Oil != undefined){
-    oilValue = "Oil"
-    filterFlag = true
+  
+  let contains = true
+  let secondFlag = false
+
+  for (const property in filterParams) {
+
+    if(property != "minPrice" && property != "maxPrice"){
+      if(contains){
+        filterExp += ` AND (`
+        contains = false
+      }
+      if (secondFlag){
+        filterExp += ` OR `
+      }
+      if (filterParams.hasOwnProperty(property)) {
+        filterExp += `contains (productCategory, :${filterParams[property]})`
+      }
+  
+      secondFlag = true
+
+      expAttr[":" + property] = filterParams[property];
+    }
   }
 
-  if(filterParams.SkinCare != undefined){
-    skinCareValue = "SkinCare"
-    filterFlag = true
+  if(!contains){
+    filterExp += ")"
   }
 
-  if(filterParams.HairCare != undefined){
-    hairCareValue = "HairCare"
-    filterFlag = true
-  }
-
-  if(filterParams.Difusor != undefined){
-    difusorValue = "Difusor"
-    filterFlag = true
-  }
-
-
-  if(!filterFlag){
-    oilValue = "Oil"
-    skinCareValue = "SkinCare"
-    hairCareValue = "HairCare"
-    difusorValue = "Difusor"
-  }
+  console.log(expAttr)
+  console.log(filterExp)
   var params = {
-    ExpressionAttributeValues: {
-        ':minPrice': minPrice,
-        ':maxPrice': maxPrice,
-        ':Oil': oilValue,
-        ':SkinCare': skinCareValue,
-        ':HairCare': hairCareValue,
-        ':Difusor': difusorValue
-    },
-    FilterExpression: "productPrice BETWEEN :minPrice AND :maxPrice AND (contains(productType, :Oil) OR contains(productType, :SkinCare) OR contains(productType, :HairCare) OR contains(productType, :Difusor)) ",
+    ExpressionAttributeValues: expAttr,
+    FilterExpression: filterExp,
     TableName: productsTable,
   }
 
   let data = await docClient.scan(params).promise()
   console.log(data)
   return data.Items
-
 }
 
 
