@@ -2,6 +2,7 @@ var express = require('express')
 var addProduct = require('../endpoints/admin/Products/addProduct.ts')
 var getProduct = require('../endpoints/admin/Products/getProduct.ts')
 var getProducts = require('../endpoints/admin/Products/getProducts.ts')
+var getCategories = require('../endpoints/admin/Products/getCategories.ts')
 var updateProduct = require('../endpoints/admin/Products/updateProduct.ts')
 var removeProduct = require('../endpoints/admin/Products/removeProduct.ts')
 var removeProducts = require('../endpoints/admin/Products/removeProducts.ts')
@@ -59,6 +60,15 @@ router.get('/getProducts', async (req,res) => {
         }
         res.send(products)
     }
+});
+router.get('/getCategories', async (req,res) => {
+    let categories;
+    try{
+         categories = await getCategories()
+    }catch(err){
+
+    }
+    res.send(categories)
 });
 
 router.post('/addProduct', async(req,res) => {
