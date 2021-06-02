@@ -23,7 +23,7 @@ async  function addProduct (newProduct){
 
     let searchParam = name + "_" + desc;
 
-
+    newProduct.productPrice = parseFloat(newProduct.productPrice)
     const newItem = {
         productId: productId,
         //s3Key : 
