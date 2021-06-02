@@ -61,8 +61,6 @@ async function filterProducts(filterParams){
     filterExp += ")"
   }
 
-  console.log(expAttr)
-  console.log(filterExp)
   var params = {
     ExpressionAttributeValues: expAttr,
     FilterExpression: filterExp,
@@ -70,7 +68,6 @@ async function filterProducts(filterParams){
   }
 
   let data = await docClient.scan(params).promise()
-  console.log(data)
   return data.Items
 }
 

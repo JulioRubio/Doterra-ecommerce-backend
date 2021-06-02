@@ -51,7 +51,6 @@ router.get('/getProducts', async (req,res) => {
         for(let i = 0; i < products.body.Count; i++){
             products.body.Items[i].productImages = []
             try{
-
                 let productImage = await getProductImage( products.body.Items[i].productId)
                 products.body.Items[i].productImages = productImage.body[0].productImage
             }catch{
@@ -203,9 +202,17 @@ router.post('/searchProduct', async (req,res) => {
     let queryResult;
     try{
         queryResult = await query(req.body)
-        res.send(queryResult)
+        
     }catch{
 
+    }finally{
+        for(item in queryResult){
+            let productImage = await getProductImage(queryResult[item].productId)
+            //queryResult[item].productImages = []
+            queryResult[item].productImages = productImage.body[0].productImage
+            //console.log(filterItems[item].productId)
+        }
+        res.send(queryResult)
     }
 });
 
@@ -213,10 +220,17 @@ router.post('/filterProducts', async (req,res) =>{
     let filterItems;
     try{
         filterItems = await filter(req.body)
-        res.send(filterItems)
     }
     catch{
 
+    }finally{
+        for(item in filterItems){
+            let productImage = await getProductImage(filterItems[item].productId)
+            //filterItems[item].productImages = []
+            filterItems[item].productImages = productImage.body[0].productImage
+            //console.log(filterItems[item].productId)
+        }
+        res.send(filterItems)
     }
 });
 
