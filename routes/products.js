@@ -197,7 +197,7 @@ router.delete('/deleteProducts', async (req, res) => {
     }
 });
 
-router.get('/searchProduct', async (req,res) => {
+router.post('/searchProduct', async (req,res) => {
     let queryResult;
     try{
         queryResult = await query(req.body)
@@ -207,7 +207,7 @@ router.get('/searchProduct', async (req,res) => {
     }
 });
 
-router.get('/filterProducts', async (req,res) =>{
+router.post('/filterProducts', async (req,res) =>{
     let filterItems;
     try{
         filterItems = await filter(req.body)
