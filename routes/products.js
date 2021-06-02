@@ -82,7 +82,8 @@ router.post('/addProduct', async(req,res) => {
             for(let i = 0; i < req.body.productImages.length; i++){
                 try{
                     console.log(req.body.productImages[i])
-                    image = await linkProductImage(newProduct, req.body.productImages[i])
+                    console.log(newProduct)
+                    image = await linkProductImage(newProduct.body.productId, req.body.productImages[i])
                     console.log(image)
                 }catch{
                     res.send(newProduct);
