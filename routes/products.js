@@ -78,16 +78,18 @@ router.post('/addProduct', async(req,res) => {
         newProduct = await addProduct(req.body);
     }catch{
 
-    }finally{  
-        for(let i = 0; i < req.body.productImages.length; i++){
-            try{
-                console.log(req.body.productImages[i])
-                image = await linkProductImage(newProduct, req.body.productImages[i])
-                console.log(image)
-            }catch{
-
+    }finally{
+        if(req.body.productImages) {
+            for(let i = 0; i < req.body.productImages.length; i++){
+                try{
+                    console.log(req.body.productImages[i])
+                    image = await linkProductImage(newProduct, req.body.productImages[i])
+                    console.log(image)
+                }catch{
+                    res.send(newProduct);
+                }
             }
-        }
+        } 
         res.send(newProduct);
     }
 });
