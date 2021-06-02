@@ -114,7 +114,7 @@ router.post('/addProductImage', function(req,res){
     });
 });
 
-router.delete('/deleteProductImage', async(req,res) => {
+router.post('/deleteProductImage', async(req,res) => {
     let result
     try{
         result = await deleteProductImage(req.body);
